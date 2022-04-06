@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/* reset */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* form */
+/* member_register */
+
+.form {
+  width: 40%;
+  margin: 0 auto;
+  background-color: #deeaf6;
+}
+
+form {
+  padding: 30px 50px;
+}
+
+form h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+form div {
+  margin-bottom: 30px;
+}
+
+form span {
+  margin-right: 30px;
+}
+
+input[name="prefecture"] {
+  margin-bottom: 15px;
+}
+
+input[name="password"], input[name="password-confirm"], input[name="email"] {
+  width: 60%;
+  float: right;
+}
+
+.btn {
+  color: #fff;
+  padding: 10px 30px;
+  background-color: #4573c3;
+  border-radius: 5px;
+  border: none;
+}
