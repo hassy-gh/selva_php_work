@@ -5,45 +5,64 @@
 	padding: 0;
 }
 
-/* form */
-/* member_register */
-
-.form {
-  width: 40%;
-  margin: 0 auto;
+body {
   background-color: #deeaf6;
 }
 
-form {
-  padding: 30px 50px;
+.container {
+  padding-top: 30px;
 }
 
-form h1 {
+.container h1 {
+  margin-bottom: 30px;
   text-align: center;
-  margin-bottom: 30px;
 }
 
-form div {
-  margin-bottom: 30px;
-}
-
-form span {
-  margin-right: 30px;
-}
-
-input[name="prefecture"] {
-  margin-bottom: 15px;
-}
-
-input[name="password"], input[name="password-confirm"], input[name="email"] {
-  width: 60%;
-  float: right;
-}
-
+/* btn */
 .btn {
-  color: #fff;
   padding: 10px 30px;
-  background-color: #4573c3;
   border-radius: 5px;
   border: none;
+}
+
+.submit, .back {
+  text-align: center;
+}
+
+.submit .btn {
+  background-color: #4573c3;
+  color: #fff;
+}
+
+.back .btn {
+  background: #fff;
+  color: #4573c3;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 30px;
+}
+
+/* form */
+/* member_register */
+
+form {
+  width: 40%;
+  margin: 0 auto;
+}
+
+th {
+  text-align-last: left;
+  padding: 15px;
+}
+
+input[type="password"], input[type="email"] {
+  width: 100%;
+}
+
+.member-registered h1, .member-registered p {
+  text-align: center;
+}
+
+.email td {
+  color: #0c63c1;
 }
