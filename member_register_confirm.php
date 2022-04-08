@@ -1,4 +1,5 @@
 <?php
+require_once('member_validation.php');
 $title = "会員情報確認";
 require_once('header.php');
 ?>
@@ -8,17 +9,17 @@ require_once('header.php');
     <table class="form">
       <tr class="name">
         <th>氏名</th>
-        <td><?php echo $_POST['last-name'] ?>　<?php echo $_POST['first-name'] ?></td>
+        <td><?php echo $lastName ?>　<?php echo $firstName ?></td>
       </tr>
 
       <tr class="gender">
         <th>性別</th>
-        <td><?php echo $_POST['gender'] ?></td>
+        <td><?php echo $gender ?></td>
       </tr>
 
       <tr class="address">
         <th>住所</th>
-        <td><?php echo $_POST['prefecture'] ?><?php echo $_POST['address'] ?></td>
+        <td><?php echo $prefecture ?><?php echo $address ?></td>
       </tr>
 
       <tr class="password">
@@ -28,7 +29,7 @@ require_once('header.php');
 
       <tr class="email">
         <th>メールアドレス</th>
-        <td><?php echo $_POST['email'] ?></td>
+        <td><?php echo $email ?></td>
       </tr>
     </table>
     <div class="submit">

@@ -55,7 +55,7 @@ th {
   padding: 15px;
 }
 
-input[type="password"], input[type="email"] {
+input[name="address"] ,input[type="password"], .email input {
   width: 100%;
 }
 
@@ -65,4 +65,11 @@ input[type="password"], input[type="email"] {
 
 .email td {
   color: #0c63c1;
+}
+
+
+/* error-messages */
+.error-messages td {
+  color: red;
+  font-size: 12px;
 }
