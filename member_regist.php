@@ -4,8 +4,8 @@ if (isset($_SESSION['errors'])) {
   $errors = $_SESSION['errors'];
 }
 $title = '会員登録フォーム';
-require_once('header.php');
-require_once('prefectures.php')
+require('header.php');
+require('prefectures.php');
 ?>
 <div class="container">
   <h1>会員情報登録フォーム</h1>
@@ -28,10 +28,10 @@ require_once('prefectures.php')
         <td>
           <?php foreach ($errors['last-name'] as $error) : ?>
           <p><?php echo $error ?></p>
-          <? endforeach ?>
+          <?php endforeach ?>
           <?php foreach ($errors['first-name'] as $error) : ?>
           <p><?php echo $error ?></p>
-          <? endforeach ?>
+          <?php endforeach ?>
         </td>
       </tr>
       <?php endif ?>
@@ -55,7 +55,7 @@ require_once('prefectures.php')
         <td>
           <?php foreach ($errors['gender'] as $error) : ?>
           <p><?php echo $error ?></p>
-          <? endforeach ?>
+          <?php endforeach ?>
         </td>
       </tr>
       <?php endif ?>
@@ -87,10 +87,12 @@ require_once('prefectures.php')
         <td>
           <?php foreach ($errors['prefecture'] as $error) : ?>
           <p><?php echo $error ?></p>
-          <? endforeach ?>
+          <?php endforeach ?>
+          <?php if (isset($errors['address'])) : ?>
           <?php foreach ($errors['address'] as $error) : ?>
           <p><?php echo $error ?></p>
-          <? endforeach ?>
+          <?php endforeach ?>
+          <?php endif ?>
         </td>
       </tr>
       <?php endif ?>
@@ -107,12 +109,12 @@ require_once('prefectures.php')
         <td>
           <?php foreach ($errors['password'] as $error) : ?>
           <p><?php echo $error ?></p>
-          <? endforeach ?>
+          <?php endforeach ?>
         </td>
       </tr>
       <?php endif ?>
 
-      <tr class="password">
+      <tr class="password-confirm">
         <th>パスワード確認</th>
         <td><input name="password-confirm" type="password" value="<?php if (isset($_SESSION['password-confirm'])) {
                                                                     echo $_SESSION['password-confirm'];
@@ -124,7 +126,7 @@ require_once('prefectures.php')
         <td>
           <?php foreach ($errors['password-confirm'] as $error) : ?>
           <p><?php echo $error ?></p>
-          <? endforeach ?>
+          <?php endforeach ?>
         </td>
       </tr>
       <?php endif ?>
@@ -141,7 +143,7 @@ require_once('prefectures.php')
         <td>
           <?php foreach ($errors['email'] as $error) : ?>
           <p><?php echo $error ?></p>
-          <? endforeach ?>
+          <?php endforeach ?>
         </td>
       </tr>
       <?php endif ?>
@@ -152,6 +154,6 @@ require_once('prefectures.php')
   </form>
 </div>
 <?php
-require_once('footer.php');
+require('footer.php');
 session_destroy();
 ?>

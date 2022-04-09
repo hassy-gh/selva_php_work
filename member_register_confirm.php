@@ -1,7 +1,7 @@
 <?php
-require_once('member_validation.php');
+require('member_validation.php');
 $title = "会員情報確認";
-require_once('header.php');
+require('header.php');
 ?>
 <div class="container">
   <h1>会員情報確認画面</h1>
@@ -9,7 +9,7 @@ require_once('header.php');
     <table class="form">
       <tr class="name">
         <th>氏名</th>
-        <td><?php echo $lastName ?>　<?php echo $firstName ?></td>
+        <td><?php echo "{$lastName}　{$firstName}" ?></td>
       </tr>
 
       <tr class="gender">
@@ -19,7 +19,7 @@ require_once('header.php');
 
       <tr class="address">
         <th>住所</th>
-        <td><?php echo $prefecture ?><?php echo $address ?></td>
+        <td><?php echo "{$prefecture}{$address}" ?></td>
       </tr>
 
       <tr class="password">
@@ -41,5 +41,5 @@ require_once('header.php');
   </form>
 </div>
 <?php
-require_once('footer.php')
+require('footer.php')
 ?>

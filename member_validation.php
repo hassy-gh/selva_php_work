@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once('prefectures.php');
+require('prefectures.php');
+
 // 値の取得
 $_SESSION['last-name'] = $_POST['last-name'];
 $_SESSION['first-name'] = $_POST['first-name'];
