@@ -1,12 +1,13 @@
 <?php
 session_start();
+require('db_connect.php');
 require('prefectures.php');
 
 // 値の取得
-$_SESSION['last-name'] = $_POST['last-name'];
-$_SESSION['first-name'] = $_POST['first-name'];
+$_SESSION['name_sei'] = $_POST['name_sei'];
+$_SESSION['name_mei'] = $_POST['name_mei'];
 $_SESSION['gender'] = $_POST['gender'];
-$_SESSION['prefecture'] = $_POST['prefecture'];
+$_SESSION['pref_name'] = $_POST['pref_name'];
 $_SESSION['address'] = $_POST['address'];
 $_SESSION['password'] = $_POST['password'];
 $_SESSION['password-confirm'] = $_POST['password-confirm'];
@@ -15,31 +16,31 @@ $_SESSION['email'] = $_POST['email'];
 // バリデーション
 $errors = array();
 // 氏名(姓)
-if (empty($_SESSION['last-name'])) {
-  $errors['last-name']['presence'] = '※氏名（姓）は必須入力です';
+if (empty($_SESSION['name_sei'])) {
+  $errors['name_sei']['presence'] = '※氏名（姓）は必須入力です';
 } elseif (strlen($_SESSION['last-name']) > 20) {
-  $errors['last-name']['max-length'] = '※氏名(姓)は20文字以内で入力してください';
+  $errors['name_sei']['max-length'] = '※氏名(姓)は20文字以内で入力してください';
 }
 
 // 氏名(名)
-if (empty($_SESSION['first-name'])) {
-  $errors['first-name']['presence'] = '※氏名（名）は必須入力です';
+if (empty($_SESSION['name_mei'])) {
+  $errors['name_mei']['presence'] = '※氏名（名）は必須入力です';
 } elseif (strlen($_SESSION['first-name']) > 20) {
-  $errors['first-name']['max-length'] = '※氏名(姓)は20文字以内で入力してください';
+  $errors['name_mei']['max-length'] = '※氏名(姓)は20文字以内で入力してください';
 }
 
 // 性別
 if (empty($_SESSION['gender'])) {
   $errors['gender']['presence'] = '※性別は必須入力です';
-} elseif (!($_SESSION['gender'] == '男性' || $_SESSION['gender'] == '女性')) {
+} elseif (!($_SESSION['gender'] == 1 || $_SESSION['gender'] == 2)) {
   $errors['gender']['wrong-gender'] = '※入力された性別が正しくありません';
 }
 
 // 住所（都道府県）
-if ($_SESSION['prefecture'] == 'blank') {
-  $errors['prefecture']['presence'] = '※住所（都道府県）は必須入力です';
-} elseif (!(in_array($_SESSION['prefecture'], $prefectures))) {
-  $errors['prefecture']['wrong-prefecture'] = '※入力された都道府県が正しくありません';
+if ($_SESSION['pref_name'] == 'blank') {
+  $errors['pref_name']['presence'] = '※住所（都道府県）は必須入力です';
+} elseif (!(in_array($_SESSION['pref_name'], $prefectures))) {
+  $errors['pref_name']['wrong-prefecture'] = '※入力された都道府県が正しくありません';
 }
 
 // 住所(それ以降の住所)
@@ -81,6 +82,14 @@ if ($_SESSION['password'] != $_SESSION['password-confirm']) {
 
 // メールアドレス
 // 正規表現
+$member = $dbh->prepare('SELECT COUNT(*) AS count FROM members WHERE email=?');
+$member->execute(array(
+  $_POST['email']
+));
+$record = $member->fetch();
+if ($record['count'] > 0) {
+  $errors['email']['duplicate'] = '※すでにメールアドレスが存在します';
+}
 $regEmail = "/^[a-zA-Z0-9_+-]+(\.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/";
 if (empty($_SESSION['email'])) {
   $errors['email']['presence'] = '※メールアドレスは必須入力です';
@@ -93,12 +102,13 @@ if (empty($_SESSION['email'])) {
   $errors['email']['character'] = '入力されたメールアドレスが正しくありません';
 }
 
+
 // 値の挿入
 if (empty($errors)) {
-  $lastName = $_SESSION['last-name'];
-  $firstName = $_SESSION['first-name'];
+  $nameSei = $_SESSION['name_sei'];
+  $nameMei = $_SESSION['name_mei'];
   $gender = $_SESSION['gender'];
-  $prefecture = $_SESSION['prefecture'];
+  $prefName = $_SESSION['prefName'];
   $address = $_SESSION['address'];
   $password = $_SESSION['password'];
   $passwordConfirm = $_SESSION['password-confirm'];

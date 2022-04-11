@@ -1,5 +1,7 @@
 <?php
 require('member_validation.php');
+$token = uniqid('', true);
+$_SESSION['token'] = $token;
 $title = "会員情報確認";
 require('header.php');
 ?>
@@ -9,17 +11,17 @@ require('header.php');
     <table class="form">
       <tr class="name">
         <th>氏名</th>
-        <td><?php echo "{$lastName}　{$firstName}" ?></td>
+        <td><?php echo "{$nameSei}　{$nameMei}" ?></td>
       </tr>
 
       <tr class="gender">
         <th>性別</th>
-        <td><?php echo $gender ?></td>
+        <td><?php echo $gender == 1 ? '男性' : '女性' ?></td>
       </tr>
 
       <tr class="address">
         <th>住所</th>
-        <td><?php echo "{$prefecture}{$address}" ?></td>
+        <td><?php echo "{$prefName}{$address}" ?></td>
       </tr>
 
       <tr class="password">
@@ -32,6 +34,8 @@ require('header.php');
         <td><?php echo $email ?></td>
       </tr>
     </table>
+
+    <input type="hidden" name="token" value="<?php echo $token; ?>">
     <div class="submit">
       <button class="btn" type="submit">登録完了</button>
     </div>

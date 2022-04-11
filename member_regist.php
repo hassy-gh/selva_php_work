@@ -3,6 +3,7 @@ session_start();
 if (isset($_SESSION['errors'])) {
   $errors = $_SESSION['errors'];
 }
+require('db_connect.php');
 $title = '会員登録フォーム';
 require('header.php');
 require('prefectures.php');
@@ -14,22 +15,22 @@ require('prefectures.php');
       <tr class="name">
         <th>氏名</th>
         <td>
-          <label>姓 <input name="last-name" type="text" value="<?php if (isset($_SESSION['last-name'])) {
-                                                                echo $_SESSION['last-name'];
+          <label>姓 <input name="name_sei" type="text" value="<?php if (isset($_SESSION['name_sei'])) {
+                                                                echo $_SESSION['name_sei'];
                                                               } ?>"></label>
-          <label>名 <input name="first-name" type="text" value="<?php if (isset($_SESSION['first-name'])) {
-                                                                  echo $_SESSION['first-name'];
-                                                                } ?>"></label>
+          <label>名 <input name="name_mei" type="text" value="<?php if (isset($_SESSION['name_mei'])) {
+                                                                echo $_SESSION['name_mei'];
+                                                              } ?>"></label>
         </td>
       </tr>
-      <?php if (isset($errors['last-name']) || isset($errors['first-name'])) : ?>
+      <?php if (isset($errors['name_sei']) || isset($errors['name_mei'])) : ?>
       <tr class="error-messages">
         <th></th>
         <td>
-          <?php foreach ($errors['last-name'] as $error) : ?>
+          <?php foreach ($errors['name_sei'] as $error) : ?>
           <p><?php echo $error ?></p>
           <?php endforeach ?>
-          <?php foreach ($errors['first-name'] as $error) : ?>
+          <?php foreach ($errors['name_mei'] as $error) : ?>
           <p><?php echo $error ?></p>
           <?php endforeach ?>
         </td>
@@ -39,12 +40,12 @@ require('prefectures.php');
       <tr class="gender">
         <th>性別</th>
         <td>
-          <label><input name="gender" type="radio" value="男性"
-              <?php echo array_key_exists('gender', $_SESSION) && $_SESSION['gender'] == '男性' ? 'checked' : ''; ?>>
+          <label><input name="gender" type="radio" value="1"
+              <?php echo array_key_exists('gender', $_SESSION) && $_SESSION['gender'] == 1 ? 'checked' : ''; ?>>
             男性
           </label>
-          <label><input name="gender" type="radio" value="女性"
-              <?php echo array_key_exists('gender', $_SESSION) && $_SESSION['gender'] == '女性' ? 'checked' : ''; ?>>
+          <label><input name="gender" type="radio" value="2"
+              <?php echo array_key_exists('gender', $_SESSION) && $_SESSION['gender'] == 2 ? 'checked' : ''; ?>>
             女性
           </label>
         </td>
@@ -65,11 +66,11 @@ require('prefectures.php');
         <td>
           <label>
             都道府県
-            <select name="prefecture">
+            <select name="pref_name">
               <option value="blank" hidden>選択してください</option>
               <?php foreach ($prefectures as $pref) : ?>
               <option value="<?php echo $pref ?>"
-                <?php echo array_key_exists('prefecture', $_SESSION) && $_SESSION['prefecture'] == $pref ? 'selected' : ''; ?>>
+                <?php echo array_key_exists('prefecture', $_SESSION) && $_SESSION['pref_name'] == $pref ? 'selected' : ''; ?>>
                 <?php echo $pref ?>
               </option>
               <?php endforeach ?>
@@ -81,11 +82,11 @@ require('prefectures.php');
                                                                   } ?>"></label>
         </td>
       </tr>
-      <?php if (isset($errors['prefecture']) || isset($errors['address'])) : ?>
+      <?php if (isset($errors['pref_name']) || isset($errors['address'])) : ?>
       <tr class="error-messages">
         <th></th>
         <td>
-          <?php foreach ($errors['prefecture'] as $error) : ?>
+          <?php foreach ($errors['pref_name'] as $error) : ?>
           <p><?php echo $error ?></p>
           <?php endforeach ?>
           <?php if (isset($errors['address'])) : ?>
