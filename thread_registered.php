@@ -26,7 +26,7 @@ if ($postToken != '' && $postToken == $sessionToken) {
     $stmt->execute();
     $_SESSION['title'] = '';
     $_SESSION['content'] = '';
-    header("location: index.php");
+    header("location: thread.php");
   } catch (PDOException $e) {
     echo $e->getMessage();
   }

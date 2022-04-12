@@ -63,6 +63,9 @@ require('header.php');
     <div class="back">
       <a class="btn" href="index.php">トップに戻る</a>
     </div>
+    <div class="back">
+      <a class="btn" href="thread.php">一覧に戻る</a>
+    </div>
   </form>
 </div>
 <?php

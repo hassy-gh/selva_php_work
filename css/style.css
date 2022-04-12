@@ -114,3 +114,32 @@ header .btn {
   margin-top: 7px;
   margin-right: 20px;
 }
+
+
+/* threads */
+.threads {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.threads .id {
+  width: 20%;
+}
+
+.threads .title {
+  width: 50%;
+}
+
+.threads .created-at {
+  width: 30%;
+}
+
+input[name="search"] {
+  width: 60%;
+  padding: 10px;
+}
+
+.search .btn {
+  background-color: #fff;
+  border: 1px solid black;
+}
