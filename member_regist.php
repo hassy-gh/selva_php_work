@@ -152,6 +152,9 @@ require('prefectures.php');
     <div class="submit">
       <button class="btn" type="submit">確認画面へ</button>
     </div>
+    <div class="back">
+      <a class="btn" href="index.php">トップに戻る</a>
+    </div>
   </form>
 </div>
 <?php
