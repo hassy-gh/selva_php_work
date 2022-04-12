@@ -1,9 +1,11 @@
 <?php
 session_start();
+
 // 二重登録防止トークン
 $token = isset($_POST['token']) ? $_POST['token'] : '';
 $sessionToken = isset($_SESSION['token']) ? $_SESSION['token'] : '';
 unset($_SESSION['token']);
+
 $title = "会員登録完了";
 require('header.php');
 require('db_connect.php');

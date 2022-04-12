@@ -9,6 +9,7 @@ require('header.php');
     <p><?php echo "ようこそ" . $_SESSION['name_sei'] . "様" ?></p>
   </div>
   <div class="header-right">
+    <a class="btn" href="thread_regist.php">新規スレッド作成</a>
     <a class="btn" href="logout.php">ログアウト</a>
   </div>
   <?php else : ?>

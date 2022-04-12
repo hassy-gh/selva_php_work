@@ -61,7 +61,7 @@ td {
   width: 70%;
 }
 
-input[name="address"] ,input[type="password"], input[name="email"] {
+input[name="address"] ,input[type="password"], input[name="email"], input[name="title"] {
   width: 100%;
 }
 
@@ -75,6 +75,11 @@ input[name="address"] ,input[type="password"], input[name="email"] {
 
 .email td {
   color: #0c63c1;
+}
+
+/* thread_register */
+.content p {
+  white-space: pre-wrap;
 }
 
 

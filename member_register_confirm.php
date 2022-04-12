@@ -1,7 +1,10 @@
 <?php
 require('member_validation.php');
+
+// 二重登録防止トークンの発行
 $token = uniqid('', true);
 $_SESSION['token'] = $token;
+
 $title = "会員情報確認";
 require('header.php');
 ?>
