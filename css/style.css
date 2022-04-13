@@ -122,15 +122,23 @@ header .btn {
   margin: 0 auto;
 }
 
+.threads a {
+  text-decoration: none;
+}
+
 .threads .id {
+  display: inline-block;
   width: 20%;
+  margin-bottom: 10px;
 }
 
 .threads .title {
+  display: inline-block;
   width: 50%;
 }
 
 .threads .created-at {
+  display: inline-block;
   width: 30%;
 }
 
@@ -142,4 +150,33 @@ input[name="search"] {
 .search .btn {
   background-color: #fff;
   border: 1px solid black;
+}
+
+
+/* thread_detail */
+.thread-detail-header p {
+  text-align: center;
+}
+
+.thread-detail-divider {
+  height: 50px;
+  background-color: #d8d8d8;
+  margin: 15px 0;
+}
+
+.thread-detail-content {
+  width: 40%;
+  margin: 0 auto;
+  padding: 10px;
+  border: 2px solid #3869e8;
+  border-radius: 10px;
+  color: #3869e8;
+}
+
+.comment .submit {
+  float: right;
+}
+
+.comment textarea {
+  width: 100%;
 }

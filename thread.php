@@ -39,9 +39,13 @@ if (empty($_POST['search'])) {
   <table class="threads">
     <?php foreach ($threads as $thread) : ?>
     <tr class="thread">
-      <td class="id">ID: <?php echo htmlspecialchars($thread['id'])  ?></td>
-      <td class="title"><?php echo htmlspecialchars($thread['title'])  ?></td>
-      <td class="created-at"><?php echo date('Y.n.d. H:i',  strtotime(htmlspecialchars($thread['created_at'])));  ?>
+      <td>
+        <a href="thread_detail.php?id=<?php echo htmlspecialchars($thread['id']) ?>">
+          <span class="id">ID: <?php echo htmlspecialchars($thread['id']) ?></span>
+          <span class="title"><?php echo htmlspecialchars($thread['title']) ?></span>
+          <span
+            class="created_at"><?php echo date('Y.n.d. H:i',  strtotime(htmlspecialchars($thread['created_at']))) ?></span>
+        </a>
       </td>
     </tr>
     <?php endforeach ?>
