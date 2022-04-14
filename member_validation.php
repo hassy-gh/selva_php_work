@@ -18,15 +18,15 @@ $errors = array();
 // 氏名(姓)
 if (empty($_SESSION['name_sei'])) {
   $errors['name_sei']['presence'] = '※氏名（姓）は必須入力です';
-} elseif (strlen($_SESSION['last-name']) > 20) {
+} elseif (mb_strlen($_SESSION['name_sei']) > 20) {
   $errors['name_sei']['max-length'] = '※氏名(姓)は20文字以内で入力してください';
 }
 
 // 氏名(名)
 if (empty($_SESSION['name_mei'])) {
   $errors['name_mei']['presence'] = '※氏名（名）は必須入力です';
-} elseif (strlen($_SESSION['first-name']) > 20) {
-  $errors['name_mei']['max-length'] = '※氏名(姓)は20文字以内で入力してください';
+} elseif (mb_strlen($_SESSION['name_mei']) > 20) {
+  $errors['name_mei']['max-length'] = '※氏名(名)は20文字以内で入力してください';
 }
 
 // 性別
@@ -44,20 +44,20 @@ if ($_SESSION['pref_name'] == 'blank') {
 }
 
 // 住所(それ以降の住所)
-if (strlen($_SESSION['address']) > 100) {
+if (mb_strlen($_SESSION['address']) > 100) {
   $errors['address']['max-length'] = '※住所(それ以降の住所)は100文字以内で入力してください';
 }
 
 // パスワード
 if (empty($_SESSION['password'])) {
   $errors['password']['presence'] = '※パスワードは必須入力です';
-} elseif ((strlen($_SESSION['password']) < 8 || strlen($_SESSION['password']) > 20) && (!(preg_match(
+} elseif ((mb_strlen($_SESSION['password']) < 8 || mb_strlen($_SESSION['password']) > 20) && (!(preg_match(
   "/^[a-zA-Z0-9]+$/",
   $_SESSION['password']
 )))) {
   $errors['password']['length'] = '※パスワードは8〜20文字で入力してください';
   $errors['password']['character'] = '※パスワードは半角英数字で入力してください';
-} elseif (strlen($_SESSION['password']) < 8 || strlen($_SESSION['password']) > 20) {
+} elseif (mb_strlen($_SESSION['password']) < 8 || mb_strlen($_SESSION['password']) > 20) {
   $errors['password']['length'] = '※パスワードは8〜20文字で入力してください';
 } elseif (!(preg_match("/^[a-zA-Z0-9]+$/", $_SESSION['password']))) {
   $errors['password']['character'] = '※パスワードは半角英数字で入力してください';
@@ -66,12 +66,12 @@ if (empty($_SESSION['password'])) {
 // パスワード確認
 if (empty($_SESSION['password-confirm'])) {
   $errors['password-confirm']['presence'] = '※パスワード確認用は必須入力です';
-} elseif ((strlen($_SESSION['password-confirm']) < 8 || strlen($_SESSION['password-confirm']) > 20) &&
+} elseif ((mb_strlen($_SESSION['password-confirm']) < 8 || mb_strlen($_SESSION['password-confirm']) > 20) &&
   (!(preg_match("/^[a-zA-Z0-9]+$/", $_SESSION['password-confirm'])))
 ) {
   $errors['password-confirm']['length'] = '※パスワード確認用は8〜20文字で入力してください';
   $errors['password-confirm']['character'] = '※パスワード確認用は半角英数字で入力してください';
-} elseif (strlen($_SESSION['password-confirm']) < 8 || strlen($_SESSION['password-confirm']) > 20) {
+} elseif (mb_strlen($_SESSION['password-confirm']) < 8 || mb_strlen($_SESSION['password-confirm']) > 20) {
   $errors['password-confirm']['length'] = '※パスワード確認用は8〜20文字で入力してください';
 } elseif (!(preg_match("/^[a-zA-Z0-9]+$/", $_SESSION['password-confirm']))) {
   $errors['password-confirm']['character'] = '※パスワード確認用は半角英数字で入力してください';
@@ -93,10 +93,10 @@ if ($record['count'] > 0) {
 $regEmail = "/^[a-zA-Z0-9_+-]+(\.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/";
 if (empty($_SESSION['email'])) {
   $errors['email']['presence'] = '※メールアドレスは必須入力です';
-} elseif (strlen($_SESSION['email']) > 200 && !(preg_match($regEmail, $_SESSION['email']))) {
+} elseif (mb_strlen($_SESSION['email']) > 200 && !(preg_match($regEmail, $_SESSION['email']))) {
   $errors['email']['max-length'] = '※メールアドレスは200文字以内で入力してください';
   $errors['email']['character'] = '入力されたメールアドレスが正しくありません';
-} elseif (strlen($_SESSION['email']) > 200) {
+} elseif (mb_strlen($_SESSION['email']) > 200) {
   $errors['email']['max-length'] = '※メールアドレスは200文字以内で入力してください';
 } elseif (!(preg_match($regEmail, $_SESSION['email']))) {
   $errors['email']['character'] = '入力されたメールアドレスが正しくありません';

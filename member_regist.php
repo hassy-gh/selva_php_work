@@ -70,7 +70,7 @@ require('prefectures.php');
               <option value="blank" hidden>選択してください</option>
               <?php foreach ($prefectures as $pref) : ?>
               <option value="<?php echo $pref ?>"
-                <?php echo array_key_exists('prefecture', $_SESSION) && $_SESSION['pref_name'] == $pref ? 'selected' : ''; ?>>
+                <?php echo array_key_exists('pref_name', $_SESSION) && $_SESSION['pref_name'] == $pref ? 'selected' : ''; ?>>
                 <?php echo $pref ?>
               </option>
               <?php endforeach ?>

@@ -84,7 +84,7 @@ input[name="address"] ,input[type="password"], input[name="email"], input[name="
 
 
 /* error-messages */
-.error-messages td {
+.error-messages, .error-messages td {
   color: red;
   font-size: 12px;
 }
@@ -173,10 +173,46 @@ input[name="search"] {
   color: #3869e8;
 }
 
+.comments {
+  width: 40%;
+  margin: 30px auto 0;
+}
+
+.comments-item {
+  border-bottom: 1px solid #bfbfbf;
+  padding-bottom: 15px;
+}
+
 .comment .submit {
   float: right;
 }
 
 .comment textarea {
   width: 100%;
+}
+
+/* pagination */
+.page-btn {
+  font-size: 20px;
+  text-decoration: none;
+  color: #1a356e;
+}
+
+.page-left {
+  float: left;
+  margin: 10px 0 0 80px;
+}
+
+.page-right {
+  float: right;
+  margin: 10px 80px 0 0;
+}
+
+.not-paging {
+  color: #868686;
+}
+
+/* footer */
+footer {
+  margin-top: 100px;
 }
