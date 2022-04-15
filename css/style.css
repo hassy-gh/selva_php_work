@@ -9,9 +9,14 @@ body {
   background-color: #deeaf6;
 }
 
-.container {
-  padding-top: 30px;
+.wrapper {
+  padding: 100px 0 160px;
+  box-sizing: border-box;
 }
+
+/* .container {
+  padding-top: 30px;
+} */
 
 .container h1 {
   margin-bottom: 30px;
@@ -92,7 +97,10 @@ input[name="address"] ,input[type="password"], input[name="email"], input[name="
 
 /* header */
 header {
+  position: fixed;
+  top: 0;
   height: 60px;
+  width: 100%;
   background-color: #fbe4d5;
 }
 
@@ -233,7 +241,32 @@ input[name="search"] {
   color: #868686;
 }
 
+/* member_withdrawal */
+.withdrawal p {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 /* footer */
 footer {
+  position: fixed;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  background-color: #fbe4d5;
   margin-top: 100px;
+}
+
+.footer-right {
+  float: right;
+}
+
+footer .btn {
+  background-color: #fbe4d5;
+  border: 2px solid black;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 7px;
+  margin-right: 20px;
 }

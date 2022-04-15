@@ -21,6 +21,14 @@ require('header.php');
   </div>
   <?php endif ?>
 </header>
+
+<?php if (isset($_SESSION['id'])) : ?>
+<footer>
+  <div class="footer-right">
+    <a class="btn" href="member_withdrawal.php">退会</a>
+  </div>
+</footer>
+<?php endif ?>
 <?php
 require('footer.php');
 ?>

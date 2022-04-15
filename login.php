@@ -11,6 +11,13 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 require('db_connect.php');
 
+// 会員データの取得
+$sql = "SELECT * FROM members WHERE email = :email";
+$stmt = $dbh->prepare($sql);
+$stmt->bindParam(':email', $email);
+$stmt->execute();
+$member = $stmt->fetch();
+
 // バリデーション
 if (isset($_POST['submit'])) {
   $errors = array();
@@ -21,12 +28,7 @@ if (isset($_POST['submit'])) {
     $errors['login']['password'] = '※パスワードは必須入力です';
   }
   if (!empty($email) && !empty($password)) {
-    $sql = "SELECT * FROM members WHERE email = :email";
-    $stmt = $dbh->prepare($sql);
-    $stmt->bindParam(':email', $email);
-    $stmt->execute();
-    $member = $stmt->fetch();
-    if (password_verify($password, $member['password'])) {
+    if (password_verify($password, $member['password']) && is_null($member['deleted_at'])) {
       $_SESSION['id'] = $member['id'];
       $_SESSION['name_sei'] = $member['name_sei'];
       $_SESSION['name_mei'] = $member['name_mei'];
