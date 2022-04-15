@@ -108,7 +108,7 @@ if (empty($errors)) {
   $nameSei = $_SESSION['name_sei'];
   $nameMei = $_SESSION['name_mei'];
   $gender = $_SESSION['gender'];
-  $prefName = $_SESSION['prefName'];
+  $prefName = $_SESSION['pref_name'];
   $address = $_SESSION['address'];
   $password = $_SESSION['password'];
   $passwordConfirm = $_SESSION['password-confirm'];

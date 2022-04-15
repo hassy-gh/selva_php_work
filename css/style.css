@@ -87,7 +87,6 @@ input[name="address"] ,input[type="password"], input[name="email"], input[name="
   white-space: pre-wrap;
 }
 
-
 /* error-messages */
 .error-messages, .error-messages td {
   color: red;
@@ -269,4 +268,32 @@ footer .btn {
   display: inline-block;
   margin-top: 7px;
   margin-right: 20px;
+}
+
+/* admin */
+/* header */
+.admin-header {
+  background-color: #d9d9d9;
+}
+
+.admin-header .header-right p {
+  display: inline-block;
+  margin-right: 30px;
+}
+.admin-header .btn {
+  background-color: #d9d9d9;
+}
+
+/* footer */
+.admin-footer {
+  background-color: #d9d9d9;
+}
+
+/* admin_login */
+.admin-login .form {
+  width: 100%;
+}
+
+.admin-login input {
+  width: 90%;
 }
