@@ -181,6 +181,7 @@ input[name="search"] {
 .comments-item {
   border-bottom: 1px solid #bfbfbf;
   padding-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .comment .submit {
@@ -189,6 +190,26 @@ input[name="search"] {
 
 .comment textarea {
   width: 100%;
+}
+
+/* likes_form */
+.likes-form {
+  text-align: right;
+}
+
+.likes-form form {
+  width: 100%;
+  margin: 0;
+  display: inline;
+}
+
+.likes-form button {
+  background: none;
+  border: none;
+}
+
+.unlike {
+  color: #fc0100;
 }
 
 /* pagination */

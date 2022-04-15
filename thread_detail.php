@@ -22,7 +22,24 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   $comments[] = $row;
 }
 // コメント数
-$count = $stmt->rowCount();
+$commentCount = $stmt->rowCount();
+// いいね数
+$sql = "SELECT COUNT(member_id) AS count, comment_id FROM likes GROUP BY comment_id";
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+$likeCount = array();
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+  $likeCount[$row['comment_id']] = $row['count'];
+}
+// いいね
+$sql = "SELECT comment_id FROM likes WHERE member_id = :member_id";
+$stmt = $dbh->prepare($sql);
+$stmt->bindParam(':member_id', $_SESSION['id']);
+$stmt->execute();
+$liked = array();
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+  $liked[] = $row['comment_id'];
+}
 
 // ページング
 if (isset($_REQUEST['page']) && is_numeric($_REQUEST['page'])) {
@@ -30,7 +47,7 @@ if (isset($_REQUEST['page']) && is_numeric($_REQUEST['page'])) {
 } else {
   $page = 1;
 }
-$maxPage = ceil($count / 5);
+$maxPage = ceil($commentCount / 5);
 $startNo = ($page - 1) * 5;
 $displayData = array_slice($comments, $startNo, 5, true);
 
@@ -52,7 +69,7 @@ if (isset($_SESSION['error'])) {
     <div class="thread-detail-header">
       <h1><?php echo htmlspecialchars($thread['title']) ?></h1>
       <p>
-        <?php echo htmlspecialchars($count) ?>コメント
+        <?php echo htmlspecialchars($commentCount) ?>コメント
         <?php echo date('n/d/y H:i',  strtotime(htmlspecialchars($thread['created_at']))) ?>
       </p>
     </div>
@@ -100,6 +117,32 @@ if (isset($_SESSION['error'])) {
         <p>
           <?php echo $comment['comment'] ?>
         </p>
+        <div class="likes-form">
+          <?php if (!in_array($comment['comment_id'], $liked)) : ?>
+          <form action="like.php" method="post" class="likes">
+            <input name="thread_id" type="hidden" value="<?php echo $thread['thread_id'] ?>">
+            <input name="page" type="hidden" value="<?php echo $page ?>">
+            <input name="comment_id" type="hidden" value="<?php echo $comment['comment_id'] ?>">
+            <button type="submit">
+              <i class="like far fa-heart"></i>
+            </button>
+          </form>
+          <?php else : ?>
+          <form action="unlike.php" method="post" class="likes">
+            <input name="thread_id" type="hidden" value="<?php echo $thread['thread_id'] ?>">
+            <input name="page" type="hidden" value="<?php echo $page ?>">
+            <input name="comment_id" type="hidden" value="<?php echo $comment['comment_id'] ?>">
+            <button type="submit">
+              <i class="unlike fas fa-heart"></i>
+            </button>
+          </form>
+          <?php endif ?>
+          <?php if (array_key_exists($comment['comment_id'], $likeCount)) : ?>
+          <?php echo $likeCount[$comment['comment_id']] ?>
+          <?php else : ?>
+          0
+          <?php endif ?>
+        </div>
       </div>
       <?php endforeach ?>
     </div>
