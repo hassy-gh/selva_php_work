@@ -32,7 +32,7 @@ if (empty($_POST['search'])) {
 </header>
 <?php endif ?>
 <div class="container">
-  <form class="search" action="" method="post">
+  <form class="thread-search" action="" method="post">
     <input name="search" type="text">
     <button class="btn" type="submit">スレッド検索</button>
   </form>

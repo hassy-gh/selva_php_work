@@ -154,7 +154,7 @@ input[name="search"] {
   padding: 10px;
 }
 
-.search .btn {
+.thread-search .btn {
   background-color: #fff;
   border: 1px solid black;
 }
@@ -226,12 +226,12 @@ input[name="search"] {
   color: #1a356e;
 }
 
-.page-left {
+.thread-detail-divider .page-left {
   float: left;
   margin: 10px 0 0 80px;
 }
 
-.page-right {
+.thread-detail-divider .page-right {
   float: right;
   margin: 10px 80px 0 0;
 }
@@ -296,4 +296,123 @@ footer .btn {
 
 .admin-login input {
   width: 90%;
+}
+
+/* member_search */
+.member-search .form {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.member-search th {
+  background-color: #d8d8d8;
+}
+
+.member-search td {
+  padding-left: 10px;
+}
+
+.member-search input[name="id"],
+.member-search input[name="free_word"] {
+  padding: 10px;
+  width: 90%;
+}
+
+.member-search select {
+  padding: 10px;
+}
+
+/* members */
+.members-wrapper {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.members {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.members thead {
+  background: #d8d8d8;
+}
+
+.members th {
+  text-align: center;
+  font-size: 12px;
+}
+
+.members .id {
+  width: 12%;
+}
+
+.members .name {
+  width: 20%;
+}
+
+.members .gender {
+  width: 10%;
+}
+
+.members .address {
+  width: 40%;
+}
+
+.members .created-at {
+  width: 18%;
+}
+
+/* toggle_button */
+.toggle {
+  display: inline;
+}
+
+.toggle button {
+  background: none;
+  border: none;
+}
+
+/* member_pagination */
+.member-pagination {
+  margin-top: 30px;
+  float: right;
+}
+
+.member-pagination .page-left,
+.member-pagination .page-right {
+  background-color: #fff;
+  border: 1px solid black;
+  color: black;
+}
+
+.member-pagination .page-left {
+  display: inline-block;
+}
+
+.member-pagination .paging {
+  display: inline-block;
+}
+
+.member-pagination .paging a {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  background-color: #fff;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.now-page {
+  font-size: 20px;
+  color: white;
+  background-color: #757070;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.member-pagination .page-right {
+  display: inline-block;
 }

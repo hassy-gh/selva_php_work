@@ -22,6 +22,9 @@ require('../header.php');
 </header>
 
 <div class="container">
+  <div class="back">
+    <a class="btn" href="member.php">会員一覧</a>
+  </div>
 </div>
 
 <?php
