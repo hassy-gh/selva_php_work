@@ -49,6 +49,19 @@ body {
   margin-top: 30px;
 }
 
+.member-regist {
+  text-align: left;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.member-regist .btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  margin-bottom: 30px;
+}
+
 /* form */
 /* member_register */
 
@@ -325,7 +338,7 @@ footer .btn {
 
 /* members */
 .members-wrapper {
-  width: 40%;
+  width: 55%;
   margin: 0 auto;
 }
 
@@ -346,7 +359,7 @@ footer .btn {
 }
 
 .members .id {
-  width: 12%;
+  width: 10%;
 }
 
 .members .name {
@@ -354,7 +367,7 @@ footer .btn {
 }
 
 .members .gender {
-  width: 10%;
+  width: 8%;
 }
 
 .members .address {
@@ -362,7 +375,16 @@ footer .btn {
 }
 
 .members .created-at {
-  width: 18%;
+  width: 15%;
+}
+
+.members .edit {
+  width: 7%;
+}
+
+.members .edit a {
+  color: #4573c3;
+  text-decoration: none;
 }
 
 /* toggle_button */

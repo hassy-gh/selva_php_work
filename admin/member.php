@@ -130,6 +130,9 @@ require('../header.php');
 </header>
 
 <div class="container">
+  <div class="submit member-regist">
+    <a href="member_regist.php" class="btn">会員登録</a>
+  </div>
   <form action="member.php" method="post" class="member-search">
     <table class="form" border="1">
       <tr>
@@ -211,6 +214,7 @@ require('../header.php');
               <?php endif ?>
             </form>
           </th>
+          <th class="edit">編集</th>
         </tr>
       </thead>
 
@@ -227,6 +231,9 @@ require('../header.php');
           </td>
           <td class="created-at">
             <?php echo date('Y/n/d', strtotime($member['created_at'])) ?>
+          </td>
+          <td class="edit">
+            <a href="member_edit.php?id=<?php echo $member['id'] ?>">編集</a>
           </td>
         </tr>
         <?php endforeach ?>
@@ -262,4 +269,14 @@ require('../header.php');
 </div>
 <?php
 require('../footer.php');
+$_SESSION['member_id'] = '';
+$_SESSION['name_sei'] = '';
+$_SESSION['name_mei'] = '';
+$_SESSION['gender'] = '';
+$_SESSION['pref_name'] = '';
+$_SESSION['address'] = '';
+$_SESSION['password'] = '';
+$_SESSION['password_confirm'] = '';
+$_SESSION['email'] = '';
+$_SESSION['errors'] = '';
 ?>
