@@ -40,6 +40,13 @@ body {
   color: #fff;
 }
 
+.submit a {
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin-top: 30px;
+}
+
 .back .btn {
   background: #fff;
   color: #4573c3;
@@ -338,7 +345,7 @@ footer .btn {
 
 /* members */
 .members-wrapper {
-  width: 55%;
+  width: 60%;
   margin: 0 auto;
 }
 
@@ -359,7 +366,7 @@ footer .btn {
 }
 
 .members .id {
-  width: 10%;
+  width: 7%;
 }
 
 .members .name {
@@ -367,22 +374,28 @@ footer .btn {
 }
 
 .members .gender {
-  width: 8%;
+  width: 7%;
 }
 
 .members .address {
-  width: 40%;
+  width: 38%;
 }
 
 .members .created-at {
-  width: 15%;
+  width: 14%;
 }
 
 .members .edit {
   width: 7%;
 }
 
-.members .edit a {
+.members .detail {
+  width: 7%;
+}
+
+.members .name a,
+.members .edit a,
+.members .detail a {
   color: #4573c3;
   text-decoration: none;
 }
@@ -437,4 +450,10 @@ footer .btn {
 
 .member-pagination .page-right {
   display: inline-block;
+}
+
+/* member_detail */
+.member-detail {
+  width: 40%;
+  margin: 0 auto;
 }

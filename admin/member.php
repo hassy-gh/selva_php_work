@@ -94,12 +94,16 @@ if ($_SESSION['sql'] && strpos($_SESSION['sql'], ':free_word') !== false) {
 }
 $stmt->execute();
 $members = array();
+$memberCount = 0;
 while ($row = $stmt->fetch()) {
-  $members[] = $row;
+  if (is_null($row['deleted_at'])) {
+    $members[] = $row;
+    $memberCount += 1;
+  }
 }
 
 // ページング
-$memberCount = $stmt->rowCount();
+
 if (isset($_REQUEST['page']) && is_numeric($_REQUEST['page'])) {
   $page = $_REQUEST['page'];
 } else {
@@ -215,6 +219,7 @@ require('../header.php');
             </form>
           </th>
           <th class="edit">編集</th>
+          <th class="detail">詳細</th>
         </tr>
       </thead>
 
@@ -223,7 +228,8 @@ require('../header.php');
         <tr>
           <td class="id"><?php echo htmlspecialchars($member['id']) ?></td>
           <td class="name">
-            <?php echo "{$member['name_sei']} {$member['name_mei']}" ?>
+            <a
+              href="member_detail.php?id=<?php echo $member['id'] ?>"><?php echo "{$member['name_sei']} {$member['name_mei']}" ?></a>
           </td>
           <td class="gender"><?php echo $member['gender'] == '1' ? '男性' : '女性' ?></td>
           <td class="address">
@@ -235,12 +241,15 @@ require('../header.php');
           <td class="edit">
             <a href="member_edit.php?id=<?php echo $member['id'] ?>">編集</a>
           </td>
+          <td class="detail">
+            <a href="member_detail.php?id=<?php echo $member['id'] ?>">詳細</a>
+          </td>
         </tr>
         <?php endforeach ?>
       </tbody>
     </table>
 
-    <?php if ($maxPage > 1) : ?>
+    <?php if ($memberCount > 10) : ?>
     <div class="member-pagination">
       <?php if ($page >= 2) : ?>
       <div class="page-left">
