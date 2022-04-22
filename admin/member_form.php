@@ -14,11 +14,22 @@ if (isset($_SESSION['errors'])) {
 
 require('../db_connect.php');
 
-if ($_SERVER['REQUEST_URI'] == '/selva_php_work/admin/member_regist.php') {
-  $url = 'regist';
-} elseif ($_SERVER['REQUEST_URI'] == '/selva_php_work/admin/member_edit.php') {
-  $url = 'edit';
+if ($_SERVER['SERVER_NAME'] === 'localhost') {
+  // localhost
+  if ($_SERVER['REQUEST_URI'] == '/admin/member_regist.php') {
+    $url = 'regist';
+  } elseif ($_SERVER['REQUEST_URI'] == '/admin/member_edit.php') {
+    $url = 'edit';
+  }
+} else {
+  // 本番環境
+  if ($_SERVER['REQUEST_URI'] == '/selva_php_work/admin/member_regist.php') {
+    $url = 'regist';
+  } elseif ($_SERVER['REQUEST_URI'] == '/selva_php_work/admin/member_edit.php') {
+    $url = 'edit';
+  }
 }
+
 
 if ($url == 'regist') {
   $title = '会員登録ページ';

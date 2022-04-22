@@ -6,10 +6,21 @@ if (!isset($_SESSION['admin_id'])) {
   header("location: login.php");
   exit;
 }
-if ($_SERVER['REQUEST_URI'] == '/selva_php_work/admin/member_register_confirm.php') {
-  $url = 'regist';
-} elseif ($_SERVER['REQUEST_URI'] == '/selva_php_work/admin/member_update_confirm.php') {
-  $url = 'edit';
+
+if ($_SERVER['SERVER_NAME'] === 'localhost') {
+  // localhost
+  if ($_SERVER['REQUEST_URI'] == '/admin/member_register_confirm.php') {
+    $url = 'regist';
+  } elseif ($_SERVER['REQUEST_URI'] == '/admin/member_update_confirm.php') {
+    $url = 'edit';
+  }
+} else {
+  // 本番環境
+  if ($_SERVER['REQUEST_URI'] == '/selva_php_work/admin/member_register_confirm.php') {
+    $url = 'regist';
+  } elseif ($_SERVER['REQUEST_URI'] == '/selva_php_work/admin/member_update_confirm.php') {
+    $url = 'edit';
+  }
 }
 
 if ($url == 'regist') {
@@ -36,7 +47,7 @@ require('../header.php');
   </div>
 </header>
 <div class="container">
-  <form action="member_registered.php" method="post">
+  <form action="<?php echo $url == 'regist' ? 'member_registered.php' : 'member_updated.php' ?>" method="post">
     <table class="form">
       <tr class="id">
         <th>ID</th>
